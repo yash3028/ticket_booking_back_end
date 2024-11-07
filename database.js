@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.connect_to_database = exports.data_source = void 0;
 const typeorm_1 = require("typeorm");
+const user_1 = require("./entities/user");
 exports.data_source = new typeorm_1.DataSource({
     type: "mysql",
     host: "localhost",
@@ -20,9 +21,7 @@ exports.data_source = new typeorm_1.DataSource({
     database: "root_database",
     synchronize: true,
     logging: true,
-    entities: [__dirname + "/entities/*.ts"],
-    // subscribers: [],
-    migrations: [__dirname + "/migrations/*{.js,.ts}"],
+    entities: [user_1.Users],
 });
 const connect_to_database = () => __awaiter(void 0, void 0, void 0, function* () {
     try {

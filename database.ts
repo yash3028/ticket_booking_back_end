@@ -10,9 +10,7 @@ export const data_source = new DataSource({
   database: "root_database",
   synchronize: true,
   logging: true,
-   entities: [__dirname+"/entities/*.ts"],
-  // subscribers: [],
-   migrations: [__dirname+"/migrations/*{.js,.ts}"],
+  entities: [Users],
 });
 
 export const connect_to_database = async()=>{

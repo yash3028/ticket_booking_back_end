@@ -22,5 +22,19 @@ router.post("/save-user", (req, res, next) => __awaiter(void 0, void 0, void 0, 
         next(error);
     }
 }));
+router.post("/login", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const login_response = yield (0, user_service_1.login)(req.body);
+        if (login_response) {
+            res.status(200).send({ message: "successful" });
+        }
+        else {
+            res.status(401).send({ message: "unauthorized" });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+}));
 module.exports = router;
 //# sourceMappingURL=user_controller.js.map

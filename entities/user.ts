@@ -1,43 +1,42 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { data_source } from "../database";
 
-@Entity("USERS")
+@Entity()
 export class Users{
     @PrimaryGeneratedColumn()
     id!: number;
     
-    @Column()
-    full_name: string | undefined;
+    @Column({default:null})
+    full_name!: string;
 
-    @Column()
-    email: string | undefined;
+    @Column({default:null})
+    email!: string;
 
-    @Column()
-    mobile: string | undefined;
+    @Column({default:null})
+    mobile!: string;
 
-    @Column()
-    user_role: string | undefined;
+    @Column({default:null})
+    user_role!: string;
 
-    @Column()
-    company_name: string | undefined;
+    @Column({default:null})
+    company_name!: string;
 
-    @Column()
-    date_of_birth: Date | undefined;
+    @Column({default:null})
+    date_of_birth!: Date;
 
-    @Column()
-    pass: string | undefined;
+    @Column({default:null})
+    password!: string;
 
-    @Column()
-    token: string | undefined;
+    @Column({default:null})
+    token!: string;
 
     @CreateDateColumn()
-    created_date:  Date | undefined;
+    created_date!:  Date;
 
     @UpdateDateColumn()
-    updated_date: Date | undefined 
+    updated_date!: Date;
 
     @DeleteDateColumn()
-    deleted_date: Date | undefined 
+    deleted_date!: Date;
 }
 
-export const user_repository = data_source.getRepository(Users)

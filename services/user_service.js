@@ -10,11 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.save_user = save_user;
+exports.login = login;
+const database_1 = require("../database");
 const user_1 = require("../entities/user");
 function save_user(user) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const saved_user = user_1.user_repository.save(user);
+            const user_repository = database_1.data_source.getRepository(user_1.Users);
+            const saved_user = user_repository.save(user);
             return saved_user;
         }
         catch (error) {
@@ -22,4 +25,26 @@ function save_user(user) {
         }
     });
 }
+function login(credentials) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const user_repository = database_1.data_source.getRepository(user_1.Users);
+            const response = yield user_repository.findOne({
+                where: {
+                    mobile: credentials.mobile
+                }
+            });
+            if ((response === null || response === void 0 ? void 0 : response.password) == credentials.password) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (error) {
+            throw error;
+        }
+    });
+}
+;
 //# sourceMappingURL=user_service.js.map

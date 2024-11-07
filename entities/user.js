@@ -9,9 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.user_repository = exports.Users = void 0;
+exports.Users = void 0;
 const typeorm_1 = require("typeorm");
-const database_1 = require("../database");
 let Users = class Users {
 };
 exports.Users = Users;
@@ -20,51 +19,50 @@ __decorate([
     __metadata("design:type", Number)
 ], Users.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "full_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "mobile", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "user_role", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "company_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", Date)
 ], Users.prototype, "date_of_birth", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
-], Users.prototype, "pass", void 0);
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
+], Users.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Object)
+    (0, typeorm_1.Column)({ default: null }),
+    __metadata("design:type", String)
 ], Users.prototype, "token", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], Users.prototype, "created_date", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], Users.prototype, "updated_date", void 0);
 __decorate([
     (0, typeorm_1.DeleteDateColumn)(),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], Users.prototype, "deleted_date", void 0);
 exports.Users = Users = __decorate([
-    (0, typeorm_1.Entity)("USERS")
+    (0, typeorm_1.Entity)()
 ], Users);
-exports.user_repository = database_1.data_source.getRepository(Users);
 //# sourceMappingURL=user.js.map
