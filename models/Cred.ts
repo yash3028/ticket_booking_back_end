@@ -1,4 +1,4 @@
-export interface Credentials{
+export interface Cred{
     mobile : string,
     password :string,
     user_role:string

@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
 import { STATUS_CODES } from 'http'
-import { login, save_user } from '../services/user_service'
-
+import { agent, login, save_user } from '../services/user_service'
+import {validation} from '../middlewares/verify'
 
 const router:Router = express.Router()
 
@@ -12,21 +12,40 @@ router.post("/save-user",async(req:Request,res:Response,next:NextFunction)=>{
         next(error)
     }
 })
+
 router.post("/login",async(req:Request,res:Response,next:NextFunction)=>{
     try{
-       const login_response:boolean = await login(req.body)
-       if (login_response){
-        res.status(200).send({message:"successful"})
+       const login_response = await login(req.body)
+       console.log("Login response:", login_response);
+
+       if (login_response.success){
+        res.status(200).json({message:"successful",token:login_response.token})
        }
        else{
-        res.status(401).send({message:"unauthorized"})
+        res.status(401).json({message:"unauthorized"})
        }
        
     }
     catch(error){
         next(error)
     }
+});
+
+router.post("/agent",async(req:Request,res:Response,next:NextFunction)=>{
+    try{
+        const agent_login:boolean=await agent(req.body)
+        if(agent_login){
+            res.status(200).json({message:"valid"})
+        }
+        else{
+            res.status(401).json({message:"not valid"})
+        }
+    }
+    catch(error){
+        next(error)
+    }
 })
+
 
 export = router
 
