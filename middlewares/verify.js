@@ -18,6 +18,7 @@ const validation = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const authheader = req.headers.authorization;
         if (!authheader) {
             res.status(401).json({ message: "header is missing" });
+            return;
         }
         const token = authheader === null || authheader === void 0 ? void 0 : authheader.split(" ")[1];
         if (!token) {

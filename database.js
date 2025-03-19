@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.connect_to_database = exports.data_source = void 0;
 const typeorm_1 = require("typeorm");
 const user_1 = require("./entities/user");
+const bus_details_1 = require("./entities/bus_details");
+const cities_1 = require("./entities/cities");
 exports.data_source = new typeorm_1.DataSource({
     type: "mysql",
     host: "localhost",
@@ -21,7 +23,7 @@ exports.data_source = new typeorm_1.DataSource({
     database: "root_database",
     synchronize: true,
     logging: true,
-    entities: [user_1.Users],
+    entities: [user_1.Users, bus_details_1.Bus_Details, cities_1.master_data],
 });
 const connect_to_database = () => __awaiter(void 0, void 0, void 0, function* () {
     try {

@@ -7,11 +7,12 @@ export const validation = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+):Promise<void> => {
   try {
     const authheader = req.headers.authorization;
     if (!authheader) {
-       res.status(401).json({ message: "header is missing" });
+      res.status(401).json({ message: "header is missing" });
+      return
     
     }
     const token: string | undefined = authheader?.split(" ")[1];

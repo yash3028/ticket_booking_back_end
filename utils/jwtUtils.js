@@ -24,15 +24,15 @@ function payload(user_id, email) {
     return { user_id, email };
 }
 function generateJWT(payload) {
-    return jsonwebtoken_1.default.sign(payload, key, { expiresIn: '1h' });
+    return jsonwebtoken_1.default.sign(payload, key, { expiresIn: "1h" });
 }
 function verification(token) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             let payload = null;
-            yield jsonwebtoken_1.default.verify(token, key, { complete: true }, function (error, decoded) {
+            jsonwebtoken_1.default.verify(token, key, { complete: true }, function (error, decoded) {
                 if (error) {
-                    throw error.message;
+                    throw error;
                 }
                 else {
                     payload = decoded === null || decoded === void 0 ? void 0 : decoded.payload;
@@ -45,5 +45,4 @@ function verification(token) {
         }
     });
 }
-;
 //# sourceMappingURL=jwtUtils.js.map

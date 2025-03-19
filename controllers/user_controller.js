@@ -27,24 +27,12 @@ router.post("/login", (req, res, next) => __awaiter(void 0, void 0, void 0, func
         const login_response = yield (0, user_service_1.login)(req.body);
         console.log("Login response:", login_response);
         if (login_response.success) {
-            res.status(200).json({ message: "successful", token: login_response.token });
+            res
+                .status(200)
+                .json({ message: "successful", token: login_response.token });
         }
         else {
             res.status(401).json({ message: "unauthorized" });
-        }
-    }
-    catch (error) {
-        next(error);
-    }
-}));
-router.post("/agent", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const agent_login = yield (0, user_service_1.agent)(req.body);
-        if (agent_login) {
-            res.status(200).json({ message: "valid" });
-        }
-        else {
-            res.status(401).json({ message: "not valid" });
         }
     }
     catch (error) {
